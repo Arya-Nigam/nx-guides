@@ -6,9 +6,9 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.16.7
 kernelspec:
-  display_name: .venv
+  display_name: anaconda-panel-2023.05-py310
   language: python
-  name: python3
+  name: conda-env-anaconda-panel-2023.05-py310-py
 ---
 
 ## CHECK PLANARITY
@@ -27,6 +27,10 @@ The planarity check in NetworkX is based on the **Left-Right Planarity Test**, a
 
 ```{code-cell} ipython3
 from functools import singledispatch
+```
+
+```{code-cell} ipython3
+pip install "numpy<2"
 ```
 
 ```{code-cell} ipython3
@@ -49,9 +53,9 @@ A Kuratowski subgraph (to proof non planarity) is only returned if set to true.
 
 ## Returns
 
-:
-(is_planar, certificate)
-(bool, NetworkX graph) tuple
+:
+(is_planar, certificate)
+(bool, NetworkX graph) tuple
 is_planar is true if the graph is planar. If the graph is planar certificate is a PlanarEmbedding otherwise it is a Kuratowski subgraph.
 
 ```{code-cell} ipython3
@@ -81,7 +85,7 @@ def check_planarity(G, counterexample=False):
 ```{code-cell} ipython3
 #Example 1
 # Load GraphML file
-G = nx.read_graphml("./data/planar_graph.graphml")
+G = nx.read_graphml("planar_graph.graphml")
 
 # Draw the graph
 pos = nx.planar_layout(G)  # Planar layout for better visualization
@@ -94,7 +98,7 @@ plt.show()
 ```{code-cell} ipython3
 #Example 2
 # Load GraphML file
-G = nx.read_graphml("./data/non_planar_k3_3.graphml")
+G = nx.read_graphml("non_planar_k3_3.graphml")
 
 # Draw the graph
 pos = nx.spring_layout(G)  # Spring layout for visualization
@@ -125,7 +129,7 @@ def check_planarity_recursive(G, counterexample=False):
 ```{code-cell} ipython3
 # Example 1: Planar Graph
 # Load GraphML file
-G = nx.read_graphml("./data/planar_graph.graphml")
+G = nx.read_graphml("planar_graph.graphml")
 
 # Draw the graph
 pos = nx.planar_layout(G)  # Planar layout for better visualization
@@ -146,19 +150,19 @@ This method is useful in applications like **circuit layout design, network visu
 
 ## Notes
 
-A (combinatorial) embedding consists of cyclic orderings of the incident edges at each vertex. Given such an embedding there are multiple approaches discussed in literature to drawing the graph (subject to various constraints, e.g. integer coordinates), see e.g. [2].
-
-The planarity check algorithm and extraction of the combinatorial embedding is based on the Left-Right Planarity Test [1].
-
+A (combinatorial) embedding consists of cyclic orderings of the incident edges at each vertex. Given such an embedding there are multiple approaches discussed in literature to drawing the graph (subject to various constraints, e.g. integer coordinates), see e.g. [2].
+
+The planarity check algorithm and extraction of the combinatorial embedding is based on the Left-Right Planarity Test [1].
+
 A counterexample is only generated if the corresponding parameter is set, because the complexity of the counterexample generation is higher.
 
 +++
 
 ## References
 [1]
-Ulrik Brandes: The Left-Right Planarity Test 2009 http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.217.9208
-
-2]
+Ulrik Brandes: The Left-Right Planarity Test 2009 http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.217.9208
+
+2]
 Takao Nishizeki, Md Saidur Rahman: Planar graph drawing Lecture Notes Series on Computing: Volume 12 2004
 
 +++
@@ -187,14 +191,14 @@ import matplotlib.pyplot as plt
 G: NetworkX graph
 ## Returns
  
-
-bol  o: l
+
+bol  o: l
 Whether the graph is planar.
 
 ```{code-cell} ipython3
 # Example 3: A simple planar graph
 # Load GraphML file
-G = nx.read_graphml("./data/simple_planar_graph.graphml")
+G = nx.read_graphml("simple_planar_graph.graphml")
 
 # Draw the graph
 pos = nx.spring_layout(G)  # Spring layout for visualization
@@ -207,7 +211,7 @@ plt.show()
 ```{code-cell} ipython3
 #Example 4
 # Load GraphML file
-G = nx.read_graphml("./data/K5_nonplanar.graphml")
+G = nx.read_graphml("K5_nonplanar.graphml")
 
 # Draw the graph
 pos = nx.spring_layout(G)  # Spring layout for visualization
@@ -223,9 +227,9 @@ plt.show()
 
 ## Planar Embedding in NetworkX
 
-class PlanarEmbedding(incoming_graph_data=None, **attr)[source]
-Represents a planar graph with its planar embedding.
-
+class PlanarEmbedding(incoming_graph_data=None, **attr)[source]
+Represents a planar graph with its planar embedding.
+
 The planar embedding is given by a combinatorial embedding.
 
 +++
@@ -834,7 +838,7 @@ class PlanarEmbedding(nx.DiGraph):
 
 ```{code-cell} ipython3
 # Load GraphML file
-G = nx.read_graphml("./data/planar_embedding.graphml")
+G = nx.read_graphml("planar_embedding.graphml")
 
 # Check if the graph is planar
 is_planar, embedding = nx.check_planarity(G, counterexample=False)
@@ -852,8 +856,4 @@ if is_planar:
     plt.show()
 else:
     print("The graph is not planar.")
-```
-
-```{code-cell} ipython3
-
 ```
