@@ -1,14 +1,15 @@
 ---
 jupytext:
+  main_language: python
   text_representation:
     extension: .md
     format_name: myst
     format_version: 0.13
     jupytext_version: 1.16.7
 kernelspec:
-  display_name: anaconda-panel-2023.05-py310
+  display_name: Python 3 (ipykernel)
   language: python
-  name: conda-env-anaconda-panel-2023.05-py310-py
+  name: python3
 ---
 
 ## CHECK PLANARITY
@@ -53,9 +54,12 @@ A Kuratowski subgraph (to proof non planarity) is only returned if set to true.
 
 ## Returns
 
-:
-(is_planar, certificate)
-(bool, NetworkX graph) tuple
+:
+
+(is_planar, certificate)
+
+(bool, NetworkX graph) tuple
+
 is_planar is true if the graph is planar. If the graph is planar certificate is a PlanarEmbedding otherwise it is a Kuratowski subgraph.
 
 ```{code-cell} ipython3
@@ -150,19 +154,26 @@ This method is useful in applications like **circuit layout design, network visu
 
 ## Notes
 
-A (combinatorial) embedding consists of cyclic orderings of the incident edges at each vertex. Given such an embedding there are multiple approaches discussed in literature to drawing the graph (subject to various constraints, e.g. integer coordinates), see e.g. [2].
-
-The planarity check algorithm and extraction of the combinatorial embedding is based on the Left-Right Planarity Test [1].
-
+A (combinatorial) embedding consists of cyclic orderings of the incident edges at each vertex. Given such an embedding there are multiple approaches discussed in literature to drawing the graph (subject to various constraints, e.g. integer coordinates), see e.g. [2].
+
+
+
+The planarity check algorithm and extraction of the combinatorial embedding is based on the Left-Right Planarity Test [1].
+
+
+
 A counterexample is only generated if the corresponding parameter is set, because the complexity of the counterexample generation is higher.
 
 +++
 
 ## References
 [1]
-Ulrik Brandes: The Left-Right Planarity Test 2009 http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.217.9208
-
-2]
+Ulrik Brandes: The Left-Right Planarity Test 2009 http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.217.9208
+
+
+
+2]
+
 Takao Nishizeki, Md Saidur Rahman: Planar graph drawing Lecture Notes Series on Computing: Volume 12 2004
 
 +++
@@ -191,8 +202,10 @@ import matplotlib.pyplot as plt
 G: NetworkX graph
 ## Returns
  
-
-bol  o: l
+
+
+bol  o: l
+
 Whether the graph is planar.
 
 ```{code-cell} ipython3
@@ -227,9 +240,12 @@ plt.show()
 
 ## Planar Embedding in NetworkX
 
-class PlanarEmbedding(incoming_graph_data=None, **attr)[source]
-Represents a planar graph with its planar embedding.
-
+class PlanarEmbedding(incoming_graph_data=None, **attr)[source]
+
+Represents a planar graph with its planar embedding.
+
+
+
 The planar embedding is given by a combinatorial embedding.
 
 +++

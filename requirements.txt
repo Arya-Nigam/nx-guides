@@ -2,12 +2,15 @@
 git+https://github.com/networkx/networkx@main
 
 # Dependencies for running the tutorials
-numpy
+numpy<2
 scipy
 matplotlib
 pandas
 ipython!=8.7.0
 pygraphviz
+
+# Add this for GraphML support
+lxml
 
 # For testing and site generation
 nbval
